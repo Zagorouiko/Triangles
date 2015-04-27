@@ -6,11 +6,15 @@ class Triangle
   end
 
   define_method(:type) do
-    if (@side1 + @side2 <= @side3) || (@side1 + @side3 <= @side2) || (@side2 + @side3 <= @side1)
+    non_triangle = (@side1 + @side2 <= @side3) || (@side1 + @side3 <= @side2) || (@side2 + @side3 <= @side1)
+    equilateral = (@side1 == @side2) && (@side2 == @side3)
+    isosceles = (@side1 == @side2) || (@side2 == @side3) || (@side1 == @side3)
+    
+    if non_triangle
       'NOT a triangle'
-    elsif (@side1 == @side2) && (@side2 == @side3)
+    elsif equilateral
       'equilateral'
-    elsif (@side1 == @side2) || (@side2 == @side3) || (@side1 == @side3)
+    elsif isosceles
       'isosceles'
     else
       'scalene'
