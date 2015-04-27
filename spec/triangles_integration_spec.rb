@@ -9,7 +9,16 @@ describe('triangle path', {:type => :feature}) do
     fill_in('side1', :with => 2)
     fill_in('side2', :with => 2)
     fill_in('side3', :with => 2)
-    click_button('Send')
+    click_button('Find type')
     expect(page).to have_content('equilateral')
   end
+
+  it('displays error message when a side is not specified') do
+    visit('/')
+    fill_in('side1', :with => 2)
+    fill_in('side2', :with => 2)
+    click_button('Find type')
+    expect(page).to have_content('Error: You must enter a value for each side.')
+  end
+
 end

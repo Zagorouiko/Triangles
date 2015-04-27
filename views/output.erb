@@ -1,2 +1,7 @@
+<% if @user_entered %>
 <h1>Your triangle is:</h1>
   <h2><%= @output %></h2>
+
+<% else %>
+<h1>Error: You must enter a value for each side.</h1>
+<% end %>
